@@ -60,26 +60,26 @@ namespace BeerSwag
 
         }
 
-        private async void btnRegister_Click(object sender, RoutedEventArgs e)
+    
+
+        private async void btnRegister_ClickAsync(object sender, RoutedEventArgs e)
         {
-            
-            db.Register(new Common.Users() {
+            db.Register(new Common.Users()
+            {
                 UserName = txtUserName.Text.Trim(),
                 Password = txtPassword.Password,
                 Email = txtEmail.Text.Trim()
             });
-            if (code == -1)
+            if (db == null)
             {
                 var message = new MessageDialog("Login Failed");
                 await message.ShowAsync();
             }
-            else 
+            else
             {
-                var message = new MessageDialog("Register Success")
+                var message = new MessageDialog("Register Success");
                 await message.ShowAsync();
             }
-         
-            
         }
     }
 }
